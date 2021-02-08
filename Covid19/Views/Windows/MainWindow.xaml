@@ -25,7 +25,7 @@
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem MinWidth="150" MaxWidth="300">
-                <TextBlock Text="text"/>
+                <TextBlock Text="{Binding Status}"/>
             </StatusBarItem>
             <StatusBarItem>
                 <ProgressBar Width="120" 
