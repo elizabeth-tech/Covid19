@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Covid19", "Covid19\Covid19.csproj", "{4F5989E0-DD24-45A1-AE63-07C96022D64D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8C8835CB-1647-4F2E-9AB0-E05F00420490}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CV19ConsoleApp", "CV19ConsoleApp\CV19ConsoleApp.csproj", "{03983EFF-96E6-4A99-B4D5-547E30A9C91B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{4F5989E0-DD24-45A1-AE63-07C96022D64D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F5989E0-DD24-45A1-AE63-07C96022D64D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F5989E0-DD24-45A1-AE63-07C96022D64D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03983EFF-96E6-4A99-B4D5-547E30A9C91B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03983EFF-96E6-4A99-B4D5-547E30A9C91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03983EFF-96E6-4A99-B4D5-547E30A9C91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03983EFF-96E6-4A99-B4D5-547E30A9C91B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03983EFF-96E6-4A99-B4D5-547E30A9C91B} = {8C8835CB-1647-4F2E-9AB0-E05F00420490}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4554FABC-F582-4D68-B5ED-9176D8977D9F}
