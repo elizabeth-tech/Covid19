@@ -1,5 +1,8 @@
 ﻿using Covid19.Infrastructure.Commands;
+using Covid19.Models;
 using Covid19.ViewModels.Base;
+using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,6 +13,17 @@ namespace Covid19.ViewModels
         public MainWindowViewModel()
         {
             CloseApplicationCommand = new ActionCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
+
+            var data_points = new List<DataPoint>((int)(360 / 0.1));
+
+            for (var x = 0d; x <= 360; x += 1)
+            {
+                const double to_rad = Math.PI / 180;
+                var y = Math.Sin(x * to_rad);
+                data_points.Add(new DataPoint { XValue = x, YValue = y });
+            }
+
+            TestDataPoints = data_points;
         }
 
 
@@ -46,6 +60,19 @@ namespace Covid19.ViewModels
         {
             get => status;
             set => Set(ref status, value);
+        }
+        #endregion
+
+        #region Тестовый набор данных для визуализации графиков
+
+        /// <summary>Тестовый набор данных для визуализации графиков</summary>
+        private IEnumerable<DataPoint> testDataPoints;
+
+        /// <summary>Тестовый набор данных для визуализации графиков</summary>
+        public IEnumerable<DataPoint> TestDataPoints
+        {
+            get => testDataPoints;
+            set => Set(ref testDataPoints, value);
         }
         #endregion
 
