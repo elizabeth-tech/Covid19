@@ -4,13 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+       
         xmlns:fa="http://schemas.fontawesome.com/icons/"
-        xmlns:local="clr-namespace:Covid19"
-        
-        
+        xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:vm="clr-namespace:Covid19.ViewModels"
         
-        Title="{Binding Title}" Height="450" Width="800">
+        Title="{Binding Title}" Height="488" Width="690">
 
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -67,7 +66,22 @@
                                   Width="4"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Вкладка 2"></TabItem>
+            <TabItem Header="График">
+                <oxy:Plot>
+                    <!-- Оси -->
+                    <oxy:Plot.Axes>
+                        <oxy:LinearAxis Position="Left"/>
+                        <oxy:LinearAxis Position="Bottom"/>
+                    </oxy:Plot.Axes>
+
+                    <!-- Кривая -->
+                    <oxy:LineSeries Color="Red"
+                                    ItemsSource="{Binding TestDataPoints}"
+                                    DataFieldX="XValue"
+                                    DataFieldY="YValue"/>
+
+                </oxy:Plot>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>
