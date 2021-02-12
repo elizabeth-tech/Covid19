@@ -30,7 +30,7 @@ namespace Covid19.Services
         // Каждая строка извлекается отдельно. В любой момент мы можем прервать чтение и остаток не застрянет в памяти
         private static IEnumerable<string> GetDataLines()
         {
-            using var data_stream = GetDataStreamAsync().Result; // получаем заголовки
+            using var data_stream = Task.Run(GetDataStreamAsync).Result; // получаем заголовки
             using var data_reader = new StreamReader(data_stream);
 
             // Читаем построчно
