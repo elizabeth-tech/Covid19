@@ -4,6 +4,6 @@ namespace Covid19.Models
 {
     internal class CountryInfo : PlaceInfo
     {
-        public virtual IEnumerable<PlaceInfo> ProvinceCounts { get; set; }
+        public IEnumerable<ProvinceInfo> ProvinceCounts { get; set; }
     }
 }
