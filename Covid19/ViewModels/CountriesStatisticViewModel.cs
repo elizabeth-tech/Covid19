@@ -32,6 +32,20 @@ namespace Covid19.ViewModels
 
         #endregion
 
+        #region Выбранная страна
+
+        /// <summary>Выбранная страна</summary>
+        private CountryInfo selectedCountry;
+
+        /// <summary>Выбранная страна</summary>
+        public CountryInfo SelectedCountry
+        {
+            get => selectedCountry;
+            private set => Set(ref selectedCountry, value);
+        }
+
+        #endregion
+
         #endregion
 
         public CountriesStatisticViewModel(MainWindowViewModel mainModel)
