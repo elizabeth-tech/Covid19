@@ -8,9 +8,15 @@
              xmlns:fa="http://schemas.fontawesome.com/icons/"
              xmlns:vm="clr-namespace:Covid19.ViewModels"
              xmlns:m="clr-namespace:Covid19.Models"
+             xmlns:c="clr-namespace:Covid19.Infrastructure.Converters"
              
-             d:DataContext="{d:DesignInstance vm:CountriesStatisticViewModel}"
+             d:DataContext="{d:DesignInstance vm:CountriesStatisticViewModel, d:IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <c:LocationPointToStr x:Key="LocationConverter"/>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="230"/>
@@ -34,7 +40,20 @@
                         <DataTemplate DataType="m:CountryInfo">
                             <TextBlock>
                                 <TextBlock Text="{Binding Name}"/>
-                                <TextBlock Text="{Binding Location}"/>
+                                <TextBlock Text="{Binding Location, Converter={StaticResource LocationConverter}, StringFormat=({0})}"/>
+
+                                <!-- Реализация использования конвертера для отображения широты и долготы -->
+                                <!-- Минус такого метода в том, что для каждой строки создается binding -->
+                                <!--<TextBlock>
+                                    <TextBlock.Text>
+                                        <Binding Path="Location" StringFormat="({0})">
+                                            <Binding.Converter>
+                                                <c:LocationPointToStr/>
+                                            </Binding.Converter>
+                                        </Binding>
+                                    </TextBlock.Text>
+                                </TextBlock>-->
+                                
                             </TextBlock>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
