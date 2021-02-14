@@ -30,7 +30,7 @@ namespace Covid19.ViewModels
 
         #region Свойства
 
-        private CountriesStatisticViewModel CountriesStatistic { get; }
+        public CountriesStatisticViewModel CountriesStatistic { get; }
 
         #region Заголовок окна
 

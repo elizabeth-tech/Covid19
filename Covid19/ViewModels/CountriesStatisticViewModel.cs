@@ -2,7 +2,10 @@
 using Covid19.Models;
 using Covid19.Services;
 using Covid19.ViewModels.Base;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Covid19.ViewModels
@@ -39,6 +42,26 @@ namespace Covid19.ViewModels
             // Получаем данные по странам
             RefreshDataCommand = new ActionCommand(OnRefreshDataCommandExecuted);
         }
+
+
+        //// Отладочный конструктор, используемый в процессе разработки в визуальном дизайнере
+        //public CountriesStatisticViewModel() : this(null)
+        //{
+        //    Countries = Enumerable.Range(1, 10).Select(i => new CountryInfo
+        //    {
+        //        Name = $"Country i",
+        //        ProvinceCounts = Enumerable.Range(1, 10).Select(j => new PlaceInfo
+        //        {
+        //            Name = $"Province {i}",
+        //            Location = new Point(i, j),
+        //            Counts = Enumerable.Range(1, 10).Select(k => new ConfirmedCount
+        //            {
+        //                Date = DateTime.Now.Subtract(TimeSpan.FromDays(100 - k)),
+        //                Count = k
+        //            }).ToArray()
+        //        }).ToArray()
+        //    }).ToArray();
+        //}
 
         #region Команды
 

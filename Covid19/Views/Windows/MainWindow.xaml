@@ -37,7 +37,7 @@
         </StatusBar>
         <TabControl>
             <TabItem Header="Статистика">
-                <view:CountriesStatisticView/>
+                <view:CountriesStatisticView DataContext="{Binding CountriesStatistic}"/>
             </TabItem>
             <TabItem Header="График">
                 <oxy:Plot>
