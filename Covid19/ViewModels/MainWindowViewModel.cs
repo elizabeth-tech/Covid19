@@ -12,6 +12,7 @@ namespace Covid19.ViewModels
     {
         public MainWindowViewModel()
         {
+            countriesStatistic = new CountriesStatisticViewModel(this); // теперь модельки могут общаться между собой
             CloseApplicationCommand = new ActionCommand(OnCloseApplicationCommandExecuted, CanCloseApplicationCommandExecute);
 
             var data_points = new List<DataPoint>((int)(360 / 0.1));
@@ -28,6 +29,8 @@ namespace Covid19.ViewModels
 
 
         #region Свойства
+
+        private readonly CountriesStatisticViewModel countriesStatistic;
 
         #region Заголовок окна
 
