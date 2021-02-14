@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -30,7 +31,8 @@ namespace Covid19.Services
         // Каждая строка извлекается отдельно. В любой момент мы можем прервать чтение и остаток не застрянет в памяти
         private static IEnumerable<string> GetDataLines()
         {
-            using var data_stream = Task.Run(GetDataStreamAsync).Result; // получаем заголовки
+            // Запускаем задачу в пул потоков, получаем заголовки
+            using var data_stream = (SynchronizationContext.Current is null ? GetDataStreamAsync() : Task.Run(GetDataStreamAsync)).Result;
             using var data_reader = new StreamReader(data_stream);
 
             // Читаем построчно
@@ -62,8 +64,8 @@ namespace Covid19.Services
             {
                 var province = row[0].Trim();
                 var country_name = row[1].Trim(' ', '"'); // указываем, что хотим обрезать кавычки и пробелы
-                var latitude = double.Parse(row[2]);
-                var longitude = double.Parse(row[3]);
+                double latitude = !string.IsNullOrWhiteSpace(row[2]) ? double.Parse(row[2], CultureInfo.InvariantCulture) : 0.0;
+                double longitude = !string.IsNullOrWhiteSpace(row[3]) ? double.Parse(row[3], CultureInfo.InvariantCulture) : 0.0;
                 var count = row.Skip(4).Select(int.Parse).ToArray(); // пропускаем широту, долготу и лишнее. Превращаем в число кол-во зараженных
 
                 yield return (country_name, province, (latitude, longitude), count); // возвращаем данные в виде кортежа

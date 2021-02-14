@@ -41,29 +41,33 @@
                         <fa:ImageAwesome Icon="Regular_File" 
                                          Height="13"
                                          Margin="0,0,5,0" Foreground="#FF6E6868"/>
-                        <TextBlock Text="Вкладка1"/>
+                        <TextBlock Text="Статистика"/>
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="61*"/>
-                        <RowDefinition Height="133*"/>
-                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="299*"/>
-                        <ColumnDefinition Width="495*"/>
+                        <ColumnDefinition Width="230"/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-
-                    <Rectangle Grid.Column="0" Grid.Row="0"
-                               Margin="5,7"
-                               Fill="Green" 
-                               RadiusX="10" 
-                               RadiusY="10"></Rectangle>
-
-                    <GridSplitter Grid.Column="0"
-                                  Grid.RowSpan="2"
-                                  HorizontalAlignment="Right"
-                                  Width="4"/>
+                    <GridSplitter HorizontalAlignment="Right"/>
+                    <GroupBox Grid.Column="0" Header="Список стран"
+                              Margin="0,0,4,0">
+                        <ListBox>
+                            
+                        </ListBox>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1" Header="Информация"
+                              Margin="2,0,0,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <GridSplitter VerticalAlignment="Bottom"
+                                          HorizontalAlignment="Stretch"/>
+                        </Grid>
+                    </GroupBox>
+                    
                 </Grid>
             </TabItem>
             <TabItem Header="График">
