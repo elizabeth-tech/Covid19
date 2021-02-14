@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
+﻿using Covid19.Services;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Covid19
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            //var data_service = new DataService();
+            //var countries = data_service.GetData().ToArray();
+        }
+
     }
 }
