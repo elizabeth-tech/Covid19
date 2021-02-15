@@ -64,12 +64,18 @@
         <GroupBox Grid.Column="1" Header="Информация"
                   Margin="2,0,0,0">
             <Grid>
+                <Grid.Resources>
+                    <c:Ratio Coefficient="2" x:Key="Ratio2"/>
+                    <c:Linear K="5" B="3" x:Key="Linear_K5_B3"/>
+                </Grid.Resources>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <GridSplitter VerticalAlignment="Bottom"
                               HorizontalAlignment="Stretch"/>
+                <Slider Grid.Row="0" Name="ValueSlider"/>
+                <TextBlock Grid.Row="0" Margin="0,30,0,0" Text="{Binding Value, ElementName=ValueSlider, Converter={StaticResource Ratio2}}"/>
             </Grid>
         </GroupBox>
     </Grid>
