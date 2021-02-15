@@ -9,6 +9,7 @@
              xmlns:vm="clr-namespace:Covid19.ViewModels"
              xmlns:m="clr-namespace:Covid19.Models"
              xmlns:c="clr-namespace:Covid19.Infrastructure.Converters"
+             xmlns:oxy="http://oxyplot.org/wpf"
              
              d:DataContext="{d:DesignInstance vm:CountriesStatisticViewModel, d:IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -75,7 +76,18 @@
                 <GridSplitter VerticalAlignment="Bottom"
                               HorizontalAlignment="Stretch"/>
                 <Slider Grid.Row="0" Name="ValueSlider"/>
-                <TextBlock Grid.Row="0" Margin="0,30,0,0" Text="{Binding Value, ElementName=ValueSlider, Converter={StaticResource Ratio2}}"/>
+                <!--<TextBlock Grid.Row="0" Margin="0,30,0,0" Text="{Binding Value, ElementName=ValueSlider, Converter={StaticResource Ratio2}}"/>-->
+                <oxy:Plot>
+                    <!-- Оси -->
+                    <oxy:Plot.Axes>
+                        <oxy:LinearAxis Position="Left" Title="Число" MajorGridlineStyle="Solid" MinorGridlineStyle="Dash"/>
+                        <oxy:DateTimeAxis Position="Bottom" Title="Дата" MajorGridlineStyle="Solid" MinorGridlineStyle="Dash"/>
+                    </oxy:Plot.Axes>
+                    <oxy:LineSeries StrokeThickness="2" Color="Red" 
+                                    ItemsSource="{Binding SelectedCountry.Counts}"
+                                    DataFieldX="Date" DataFieldY="Count"/>
+
+                </oxy:Plot>
             </Grid>
         </GroupBox>
     </Grid>
