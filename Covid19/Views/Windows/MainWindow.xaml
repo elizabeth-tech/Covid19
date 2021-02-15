@@ -9,6 +9,7 @@
         xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:vm="clr-namespace:Covid19.ViewModels"
         xmlns:view="clr-namespace:Covid19.Views"
+
         
         Title="{Binding Title}" Height="488" Width="690">
 
@@ -54,6 +55,7 @@
                                     DataFieldY="YValue"/>
 
                 </oxy:Plot>
+                
             </TabItem>
         </TabControl>
     </DockPanel>

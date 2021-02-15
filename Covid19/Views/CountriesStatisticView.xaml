@@ -10,6 +10,7 @@
              xmlns:m="clr-namespace:Covid19.Models"
              xmlns:c="clr-namespace:Covid19.Infrastructure.Converters"
              xmlns:oxy="http://oxyplot.org/wpf"
+             xmlns:map="clr-namespace:MapControl;assembly=MapControl.WPF"
              
              d:DataContext="{d:DesignInstance vm:CountriesStatisticViewModel, d:IsDesignTimeCreatable=True}"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -68,6 +69,7 @@
                 <Grid.Resources>
                     <c:Ratio Coefficient="2" x:Key="Ratio2"/>
                     <c:Linear K="5" B="3" x:Key="Linear_K5_B3"/>
+                    <c:PointToMapLocation x:Key="PointToMap"/>
                 </Grid.Resources>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -88,6 +90,16 @@
                                     DataFieldX="Date" DataFieldY="Count"/>
 
                 </oxy:Plot>
+
+                <!-- Карта из пакета XAML Map Control -->
+                <map:Map Grid.Row="1" ZoomLevel="4" MaxZoomLevel="21" Center="{Binding SelectedCountry.Location, Converter={StaticResource PointToMap}}">
+                    <map:MapScale Margin="4" Opacity="1" Background="Transparent" VerticalAlignment="Bottom"/>
+                    <map:MapGraticule Opacity="0.3" Background="Transparent"/>
+                    <map:Map.MapLayer>
+                        <map:MapTileLayer TileSource="http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png"/>
+                    </map:Map.MapLayer>
+                </map:Map>
+
             </Grid>
         </GroupBox>
     </Grid>
