@@ -26,7 +26,7 @@
                 <MenuItem Header="О программе"/>
             </MenuItem>
         </Menu>
-        <StatusBar DockPanel.Dock="Bottom">
+        <!-- <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem MinWidth="150" MaxWidth="300">
                 <TextBlock Text="{Binding Status}"/>
             </StatusBarItem>
@@ -35,7 +35,7 @@
                              Height="15" 
                              Value="20"/>
             </StatusBarItem>
-        </StatusBar>
+        </StatusBar> -->
         <TabControl>
             <TabItem Header="Статистика">
                 <view:CountriesStatisticView DataContext="{Binding CountriesStatistic}"/>
